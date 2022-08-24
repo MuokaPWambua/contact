@@ -21,7 +21,7 @@ function App() {
   const [more, setMore] = React.useState(false)
 
   React.useState(()=>{
-    fetch('http://localhost:8000/contact?'.concat(page)).then(r=>r.json()).then(r=>{
+    fetch('http://localhost/contact?'.concat(page)).then(r=>r.json()).then(r=>{
         setData(r.data)
         setMore(r.more)
         setLoad(false)
