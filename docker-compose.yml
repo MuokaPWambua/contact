@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  
+  postgres:
+      image: postgres
+      environment:
+          POSTGRES_PASSWORD: inco
+      volumes:
+          - ./postgres/pgdata:/var/lib/postgresql/data
+      ports:
+          - 5432:5432
+
+  api:
+    build: ./api
+    container_name: api
+    restart: always
+    depends_on:
+        - postgres
+    expose:
+        - 8080
+
+  ui:
+      build: ./ui
+      container_name: ui
+      restart: always
+      ports:
+          - "80:80"
+          - "3000:3000"
+      depends_on:
+          - api
+      volumes:
+          - .:/app
+
