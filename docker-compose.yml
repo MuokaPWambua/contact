@@ -12,7 +12,7 @@ services:
           - 5432:5432
 
   api:
-    build: ./api
+    build: ./server
     container_name: api
     restart: always
     depends_on:
