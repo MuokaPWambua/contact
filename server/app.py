@@ -4,7 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import declarative_base, Session
 
 
-
 engine = create_engine("postgresql+psycopg2://postgres:inco@0.0.0.0/postgres:5432/postgres", echo = True)
 base = declarative_base()
 app = FastAPI()

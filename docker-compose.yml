@@ -12,14 +12,15 @@ services:
           - 5432:5432
 
   api:
-    build: ./server
-    container_name: api
-    restart: always
-    expose:
-        - 8000
-    depends_on:
-        - postgres
-
+      build: ./server
+      container_name: api
+      restart: always
+      expose:
+          - 8000
+      depends_on:
+          - postgres
+      volumes:
+          - .:/app
 
   ui:
       build: ./ui
@@ -31,4 +32,7 @@ services:
           - api
       volumes:
           - .:/app
+
+volumes:
+  .:
 
